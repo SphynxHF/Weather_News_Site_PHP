@@ -10,6 +10,8 @@ require_once 'config.php';
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    //add keywords and description to the meta tag
+
 </head>
 <body>
 
@@ -18,7 +20,6 @@ body {
     background-color: #f2f2f2;
 }
 </style>
-
 
 <div class="container">
 <nav class="navbar navbar-inverse">
@@ -39,7 +40,7 @@ body {
 <div class="container">
 
 <?php
-$news_url = "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=" . $news_api_key;
+$news_url = "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=" .urlencode($news_api_key);
 $news_json = file_get_contents($news_url);
 $news_array = json_decode($news_json, true);
     ?>
@@ -90,6 +91,7 @@ $news_array = json_decode($news_json, true);
 </div>
 </body>
 </html>
+
 
 <footer class="footer">
 <div class="container">
